@@ -14,10 +14,10 @@ from copy import deepcopy
 from PIL import Image
 from flask import Flask, make_response, request, json
 
-
-import app.recognition_processor as rp
-
 app = Flask(__name__)
+import recognition_processor as rp
+
+load_models = rp.modls_load()
 
 @app.route('/car_classifier', methods=['POST'])
 def classify_cars():
@@ -31,7 +31,7 @@ def classify_cars():
         return json.jsonify(get_json_response(msg='Image not found'))
 
     #start_time = datetime.now()
-    prediction_result = rp.car_classificator(img_body) 
+    prediction_result = rp.car_classificator(img_body, load_models) 
     #delta = datetime.now() - start_time
 
     if (prediction_result == []):

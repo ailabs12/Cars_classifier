@@ -3,7 +3,7 @@
 
 # Requirements
 ```
-Docker version 18.09.0`
+Docker version 18.09.0
 ```
 
 # Run server locally
